@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --onyx: #050505;
+  --violet-glow: rgba(168, 85, 247, 0.15);
+  --electric-violet: #A855F7;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--onyx);
+    color: #f8fafc;
+    /* High-contrast Onyx & Violet Gradient */
+    background: radial-gradient(circle at 80% 0%, var(--violet-glow) 0%, var(--onyx) 50%),
+                radial-gradient(circle at 20% 100%, rgba(37, 99, 235, 0.1) 0%, var(--onyx) 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Ultra-Thin Production Glass */
+  .glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  }
+
+  /* Electric Violet Glows */
+  .glow-violet {
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .glow-violet:hover {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+    transform: translateY(-2px);
+  }
+
+  /* Success Teal Glow for BUY verdicts */
+  .glow-teal {
+    box-shadow: 0 0 25px rgba(45, 212, 191, 0.3);
+  }
+}
+
+/* Custom Professional Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--onyx);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-violet);
+}
+
+/* Refined Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+.animate-float { 
+  animation: float 6s ease-in-out infinite; 
+}
+
+/* Page Entry Animation */
+.reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
